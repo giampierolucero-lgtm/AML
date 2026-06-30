@@ -17,7 +17,7 @@ from sklearn.metrics import silhouette_score
 RANDOM_STATE = 42
 st.set_page_config(page_title="GIAM - Costos Oncológicos SIS", page_icon="🩺", layout="wide")
 
-DATA_URL = "https://docs.google.com/spreadsheets/d/1IzMG4Mmaf6F_CxCt_60HOSzzWBGtQVE7/export?format=xlsx"
+DATA_FILE = "Data_Pacientes_Oncologicos.xlsx" 
 MODEL_COLS = ["EDAD","SEXO","REGION","TIPO_SEGURO","SERVICIO","GRUPO_DIAGNOSTICOS"]
 TARGET_COL = "MONTO_BRUTO"
 NUMERIC_FEATURES = ["EDAD"]
@@ -25,7 +25,7 @@ CATEGORICAL_FEATURES = ["SEXO","REGION","TIPO_SEGURO","SERVICIO","GRUPO_DIAGNOST
 
 @st.cache_data(show_spinner="Descargando y preparando el dataset...")
 def load_data():
-    df = pd.read_excel(DATA_URL, sheet_name="Hoja1")
+    df = pd.read_excel(DATA_FILE, sheet_name="Hoja1")
     df_clean = df.drop_duplicates().reset_index(drop=True)
     df_clean[TARGET_COL] = df_clean[TARGET_COL].fillna(df_clean[TARGET_COL].median())
     for col in CATEGORICAL_FEATURES:
