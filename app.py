@@ -17,7 +17,7 @@ from sklearn.metrics import silhouette_score
 RANDOM_STATE = 42
 st.set_page_config(page_title="GIAM - Costos Oncológicos SIS", page_icon="🩺", layout="wide")
 
-DATA_FILE = "Data_Pacientes_Oncologicos.xlsx" 
+DATA_URL = "Data_Pacientes_Oncologicos.xlsx" 
 MODEL_COLS = ["EDAD","SEXO","REGION","TIPO_SEGURO","SERVICIO","GRUPO_DIAGNOSTICOS"]
 TARGET_COL = "MONTO_BRUTO"
 NUMERIC_FEATURES = ["EDAD"]
