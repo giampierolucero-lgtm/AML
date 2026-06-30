@@ -25,7 +25,7 @@ CATEGORICAL_FEATURES = ["SEXO","REGION","TIPO_SEGURO","SERVICIO","GRUPO_DIAGNOST
 
 @st.cache_data(show_spinner="Descargando y preparando el dataset...")
 def load_data():
-    df = pd.read_excel(DATA_FILE, sheet_name="Hoja1")
+    df = pd.read_excel(DATA_URL, sheet_name="Hoja1")
     df_clean = df.drop_duplicates().reset_index(drop=True)
     df_clean[TARGET_COL] = df_clean[TARGET_COL].fillna(df_clean[TARGET_COL].median())
     for col in CATEGORICAL_FEATURES:
